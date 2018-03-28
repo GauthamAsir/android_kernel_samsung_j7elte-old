@@ -1533,6 +1533,7 @@ CONFIG_LEGACY_PTY_COUNT=16
 # CONFIG_TRACE_SINK is not set
 # CONFIG_DEVMEM is not set
 # CONFIG_DEVKMEM is not set
+CONFIG_FRANDOM=y
 
 #
 # Serial drivers
@@ -3093,7 +3094,6 @@ CONFIG_STAGING=y
 #
 CONFIG_ANDROID=y
 CONFIG_ANDROID_BINDER_IPC=y
-# CONFIG_ANDROID_BINDER_IPC_32BIT is not set
 CONFIG_ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
 CONFIG_ASHMEM=y
 CONFIG_ANDROID_LOGGER=y
@@ -3728,6 +3728,7 @@ CONFIG_EARLY_PRINTK=y
 # Samsung Rooting Restriction Feature
 #
 <<<<<<< HEAD:arch/arm64/configs/j7elte_00_defconfig
+<<<<<<< HEAD:arch/arm64/configs/j7elte_00_defconfig
 CONFIG_SEC_RESTRICT_ROOTING=y
 CONFIG_SEC_RESTRICT_SETUID=y
 CONFIG_SEC_RESTRICT_FORK=y
@@ -3738,6 +3739,12 @@ CONFIG_SEC_RESTRICT_ROOTING_LOG=y
 # CONFIG_SEC_RESTRICT_FORK is not set
 # CONFIG_SEC_RESTRICT_ROOTING_LOG is not set
 >>>>>>> 8e6c11758... Bring up for OREO.:arch/arm64/configs/lineageos_a3xelte_defconfig
+=======
+# CONFIG_SEC_RESTRICT_ROOTINGR is not set
+# CONFIG_SEC_RESTRICT_SETUIDR is not set
+# CONFIG_SEC_RESTRICT_FORKR is not set
+# CONFIG_SEC_RESTRICT_ROOTING_LOGR is not set
+>>>>>>> 293b7b78c... Rewrite some commits, delete not needed commits,  add getrandom syscall, add frandom driver...:arch/arm64/configs/lineageos_a3xelte_defconfig
 
 #
 # Security options
@@ -3759,8 +3766,12 @@ CONFIG_SECURITY_SELINUX_DEVELOP=y
 <<<<<<< HEAD:arch/arm64/configs/j7elte_00_defconfig
 =======
 # CONFIG_SECURITY_SELINUX_ALWAYS_ENFORCE is not set
+<<<<<<< HEAD:arch/arm64/configs/j7elte_00_defconfig
 # CONFIG_SECURITY_SELINUX_NEVER_ENFORCE is not set
 >>>>>>> 8e6c11758... Bring up for OREO.:arch/arm64/configs/lineageos_a3xelte_defconfig
+=======
+CONFIG_SECURITY_SELINUX_NEVER_ENFORCE=y
+>>>>>>> 293b7b78c... Rewrite some commits, delete not needed commits,  add getrandom syscall, add frandom driver...:arch/arm64/configs/lineageos_a3xelte_defconfig
 CONFIG_SECURITY_SELINUX_AVC_STATS=y
 CONFIG_SECURITY_SELINUX_CHECKREQPROT_VALUE=1
 # CONFIG_SECURITY_SELINUX_POLICYDB_VERSION_MAX is not set
