@@ -3756,8 +3756,7 @@ CONFIG_EARLY_PRINTK=y
 # CONFIG_SEC_RESTRICT_ROOTING_LOG is not set
 
 #
-# 
-Security options
+# Security options
 #
 CONFIG_KEYS=y
 # CONFIG_ENCRYPTED_KEYS is not set
