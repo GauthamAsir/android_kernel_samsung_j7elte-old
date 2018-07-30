@@ -772,10 +772,6 @@ out:
 	kfree(n);
 	kfree(t);
 
-
-#ifdef CONFIG_ALWAYS_ENFORCE
-	selinux_enforcing = 1;
-#endif
 	if (!selinux_enforcing)
 		return 0;
 	return -EPERM;
@@ -1535,10 +1531,6 @@ out:
 	kfree(t);
 	kfree(n);
 
-#ifdef CONFIG_ALWAYS_ENFORCE
-	selinux_enforcing = 1;
-#endif
-
 	if (!selinux_enforcing)
 		return 0;
 	return -EACCES;
@@ -1830,11 +1822,7 @@ static inline int convert_context_handle_invalid_context(struct context *context
 	char *s;
 	u32 len;
 
-#ifdef CONFIG_ALWAYS_ENFORCE
-	selinux_enforcing = 1;
-#endif
-	if (selinux_enforcing)
-
+if (selinux_enforcing)
 		return -EINVAL;
 
 	if (!context_struct_to_string(context, &s, &len)) {
@@ -3033,6 +3021,10 @@ int selinux_audit_rule_init(u32 field, u32 op, char *rulestr, void **vrule)
 	struct selinux_audit_rule **rule = (struct selinux_audit_rule **)vrule;
 	int rc = 0;
 
+#ifdef CONFIG_RKP_KDP
+	if ((rc = security_integrity_current()))
+		return rc;
+#endif
 	*rule = NULL;
 
 	if (!ss_initialized)
@@ -3124,6 +3116,12 @@ out:
 int selinux_audit_rule_known(struct audit_krule *rule)
 {
 	int i;
+#ifdef CONFIG_RKP_KDP
+	int rc;
+
+	if ((rc = security_integrity_current()))
+		return rc;
+#endif
 
 	for (i = 0; i < rule->field_count; i++) {
 		struct audit_field *f = &rule->fields[i];
@@ -3152,6 +3150,12 @@ int selinux_audit_rule_match(u32 sid, u32 field, u32 op, void *vrule,
 	struct mls_level *level;
 	struct selinux_audit_rule *rule = vrule;
 	int match = 0;
+#ifdef CONFIG_RKP_KDP
+	int rc;
+
+	if ((rc = security_integrity_current()))
+		return rc;
+#endif
 
 	if (!rule) {
 		audit_log(actx, GFP_ATOMIC, AUDIT_SELINUX_ERR,
